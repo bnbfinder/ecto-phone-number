@@ -48,6 +48,22 @@ defmodule EctoPhoneNumberTest do
     end
   end
 
+  describe "equal?/2" do
+    test "returns true when two values are equal" do
+      assert EctoPhoneNumber.equal?(@phone_number, @phone_number) == true
+    end
+
+    test "returns true when two values are equal but different format" do
+      assert EctoPhoneNumber.equal?(@phone_number, @phone_number_string_formatted) == true
+      assert EctoPhoneNumber.equal?(@phone_number, @phone_number_string_formatted_alt) == true
+      assert EctoPhoneNumber.equal?(@phone_number, @phone_number_string_e164) == true
+    end
+
+    test "returns false when two values are not equal" do
+      assert EctoPhoneNumber.equal?(@phone_number_string_formatted, @phone_number_string_with_invalid_delimiter) == false
+    end
+  end
+
   describe "cast/1" do
     test "casts itself" do
       assert EctoPhoneNumber.cast(@phone_number) == {:ok, @phone_number}

@@ -3,7 +3,7 @@ defmodule EctoPhoneNumber do
   Phone number type with validation and formatting for Ecto.
   """
 
-  @behaviour Ecto.Type
+  use Ecto.Type
 
   defstruct [:e164]
 
@@ -24,6 +24,8 @@ defmodule EctoPhoneNumber do
   end
 
   def type, do: :string
+
+  def equal?(term1, term2), do: cast(term1) == cast(term2)
 
   def cast(phone_number = %__MODULE__{}), do: {:ok, phone_number}
 
