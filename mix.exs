@@ -37,7 +37,7 @@ defmodule EctoPhoneNumber.Mixfile do
   defp deps do
     [
       {:credo, "~> 1.0", only: :dev, runtime: false},
-      {:ecto, "~> 3.2.0"},
+      {:ecto, "~> 3.5.4"},
       {:ex_doc, "~> 0.20", only: :dev, runtime: false},
       {:ex_phone_number, github: "surgeventures/ex_phone_number", tag: "v0.2.2"}
     ]
